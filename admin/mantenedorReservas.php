@@ -38,33 +38,43 @@ echo'<p align="right"><a href="cerrarSesion.php">Cerrar Session</a></p>';
 <div class="contenedorPrincipal">
 
 
+  <div id="cortinaModal" class="oculto">
+    <div id="ventanaFormularioCrearEstado" class="oculto">
 
-<div id="cortinaModal" class="oculto">
-  <div id="ventanaFormularioCrearEstado" class="oculto">
+      <form  name="formularioCrearEstado" id="formularioCrearEstado" >
+          <table class="tabla" align="center">
+            <tr>
+                <td>Fecha:&nbsp;</td>
+                <td><input required type="date" name="txt_fechaSeleccionada" readonly id="txt_fechaSeleccionada" maxlength="10" ></td>
+            </tr>
+            <tr>
+                <td><input required type="hidden" name="txt_id_hora" readonly id="txt_id_hora" maxlength="10" ></td>
+            </tr>
+            <tr>
+                <td>Hora:&nbsp;</td>
+                <td><input required type="text" name="txt_horaSeleccionada" readonly id="txt_horaSeleccionada" maxlength="10" ></td>
+            </tr>
+            <!-- <tr>
+                <td>Codigo:&nbsp;</td>
+                <td><input required type="text" name="txt_codigo" id="txt_codigo" maxlength="10"  placeholder="Ingrese su Codigo"></td>
+            </tr> -->
+            <tr>
+                <td>Rut:&nbsp;</td>
+                <td><input required type="text" name="txt_rut" id="txt_rut"  maxlength="10"  placeholder="paciente: ej:1234567-0"></td>
+                <td> <label style="color:red;" class="oculto" id="txt_rut_mensaje" for="">No registrado</label> </td>
+            </tr>
 
-    <form  name="formularioCrearEstado" id="formularioCrearEstado" >
-        <table class="tabla" align="center">
-          <tr>
-              <td>Codigo:&nbsp;</td>
-              <td><input required type="text" name="txt_codigo" id="txt_codigo" maxlength="10"  placeholder="Ingrese su Codigo"></td>
-          </tr>
-		  <tr>
-              <td>Tipo Estado:&nbsp;</td>
-              <td><input required type="text" name="txt_estado" id="txt_estado"></td>
-          </tr>
-        <td>&nbsp;</td>
-    		   <td colspan="2">
-    			  <input type="submit" value="GUARDAR">
-            <input type="reset" value="LIMPIAR">
-            <input type="button" onClick="ocultarFormularioCrear()" value="CANCELAR">
-          </td>
-      </tr>
-		 </table>
-    </form>
- </div>
-</div>
-
-
+          <td>&nbsp;</td>
+      		   <td colspan="2">
+      			  <input type="submit" value="GUARDAR">
+              <input type="reset" value="LIMPIAR">
+              <input type="button" onClick="ocultarFormularioCrear()" value="CANCELAR">
+            </td>
+        </tr>
+  		 </table>
+      </form>
+   </div>
+  </div>
 
 <!-- LISTADO  -->
 <center>
@@ -76,7 +86,7 @@ echo'<p align="right"><a href="cerrarSesion.php">Cerrar Session</a></p>';
     <button onclick="mostrarReservas()" >Mostrar</button>
   </div>
 
-    <input type="button" value="Nuevo Estado" onClick="mostarFormularioCrear()" >
+    <!-- <input type="button" value="Nuevo Estado" onClick="mostarFormularioCrear()" > -->
 
     <div id="contenedorListadoEstado"></div>
 </center>
@@ -87,15 +97,9 @@ echo'<p align="right"><a href="cerrarSesion.php">Cerrar Session</a></p>';
    libreriasComunes();
  ?>
 
-
-
-
-
 <script>
 
-
-
-  function mostrarReservas(){
+function mostrarReservas(){
 
    var fecha = $("#txt_fecha").val();
    if(fecha!=""){
@@ -111,7 +115,7 @@ echo'<p align="right"><a href="cerrarSesion.php">Cerrar Session</a></p>';
      alert("Seleccione primero una fecha");
    }
 
-  }
+}
 
   mostrarReservas();//carga la funcion al abrir la pagina
 
@@ -136,12 +140,16 @@ echo'<p align="right"><a href="cerrarSesion.php">Cerrar Session</a></p>';
   }
 
 
-  function mostarFormularioCrear(idHora,fecha){
+  function mostarFormularioCrear(idHora,hora,fecha){
     //alert("hora es: "+idHora+" fecha es: "+fecha);
       $("#formularioCrearEstado")[0].reset();
 
       $("#cortinaModal").removeClass("oculto");
       $("#ventanaFormularioCrearEstado").removeClass("oculto");
+
+      $("#txt_fechaSeleccionada").val(fecha);
+      $("#txt_horaSeleccionada").val(hora);
+      $("#txt_id_hora").val(idHora);
   }
   function ocultarFormularioCrear(){
     $("#cortinaModal").addClass("oculto");
@@ -156,14 +164,23 @@ echo'<p align="right"><a href="cerrarSesion.php">Cerrar Session</a></p>';
 
 
        $.ajax({
-         url:"./estado/insertarEstado.php",
+         url:"./reserva/insertarReserva.php",
          data:$("#formularioCrearEstado").serialize(),
          success:function(respuesta){
-           //alert(respuesta);
+           alert(respuesta);
+           $("#txt_rut_mensaje").html(respuesta);
+
            if(respuesta==1){
               alert("Guardado Correctamente");
               ocultarFormularioCrear();
               mostrarReservas();
+
+           }else if(respuesta==3){
+
+              alert("El rut ingresado no existe");
+              $("#txt_rut").focus();
+              $("#txt_rut_mensaje").removeClass("oculto");
+
 
            }else if(respuesta==2){
 

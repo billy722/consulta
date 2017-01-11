@@ -39,7 +39,7 @@ $fechaRecibida= $_REQUEST['fecha'];
                     echo '<td> <input type="button" value="Cancelar" onclick="cancelarReserva('.$filasReserva['id_reserva'].')" /> </td>';
                 }else{
                     echo '<td> <label for="">Dispobible</label> </td>';
-                    echo '<td> <input type="button" value="Reservar" onclick="mostarFormularioCrear('.$filas['id_hora'].',\''.$fechaRecibida.'\')" /> </td>';
+                    echo '<td> <input type="button" value="Reservar" onclick="mostarFormularioCrear('.$filas['id_hora'].',\''.$filas['hora'].'\',\''.$fechaRecibida.'\')" /> </td>';
                 }
                       echo "</tr>";
 

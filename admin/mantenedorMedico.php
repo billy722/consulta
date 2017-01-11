@@ -46,38 +46,39 @@ echo'<p align="right"><a href="cerrarSesion.php">Cerrar Session</a></p>';
               <td>Rut:&nbsp;</td>
               <td><input required type="text" name="txt_rut" id="txt_rut" onKeyPress="return soloNumerosyK(event);" maxlength="10"  placeholder="Ingrese su rut"></td>
           </tr>
-		  <tr>
+		      <tr>
               <td>Nombre:&nbsp;</td>
               <td><input required type="text" name="txt_nombre" id="txt_nombre"></td>
           </tr>
-		  <tr>
+		      <tr>
               <td>Apellido P:&nbsp;</td>
               <td><input required type="text" name="txt_apellido_P" id="txt_apellido_P"></td>
           </tr>
-		  <tr>
+		      <tr>
               <td>Apellido M:&nbsp;</td>
               <td><input required type="text" name="txt_apellido_m" id="txt_apellido_m"></td>
           </tr>
-		  <tr>
+		      <tr>
               <td>Domicilio:&nbsp;</td>
               <td><input required type="text" name="txt_domicilio" id="txt_domicilio"></td>
           </tr>
-		  <tr>
+		      <tr>
               <td>Fono:&nbsp;</td>
               <td><input required type="text" name="txt_fono" id="txt_fono"></td>
           </tr>
-		  <tr>
+		      <tr>
               <td>Nacionalidad:&nbsp;</td>
               <td><input required type="text" name="txt_nacionalidad" id="txt_nacionalidad"></td>
           </tr>
-		  <tr>
-        <td>&nbsp;</td>
-    		   <td colspan="2">
-    			  <input type="submit" value="GUARDAR">
-            <input type="reset" value="LIMPIAR">
-            <input type="button" onClick="ocultarFormularioCrear()" value="CANCELAR">
-          </td>
-      </tr>
+		      <tr>
+             <td>&nbsp;</td>
+             
+      		   <td colspan="2">
+      			  <input type="submit" value="GUARDAR">
+              <input type="reset" value="LIMPIAR">
+              <input type="button" onClick="ocultarFormularioCrear()" value="CANCELAR">
+            </td>
+        </tr>
 		 </table>
     </form>
  </div>
