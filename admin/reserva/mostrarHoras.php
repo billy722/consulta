@@ -35,7 +35,7 @@ $fechaRecibida= $_REQUEST['fecha'];
               if($listadoReservas->num_rows>0){
                     $filasReserva= $listadoReservas->fetch_array();
 
-                    echo '<td> <label for="">No dispobible</label> </td>';
+                    echo '<td> <label for="">No disponible</label> </td>';
                     echo '<td> <input type="button" value="Cancelar" onclick="cancelarReserva('.$filasReserva['id_reserva'].')" /> </td>';
                 }else{
                     echo '<td> <label for="">Dispobible</label> </td>';

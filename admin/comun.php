@@ -35,7 +35,7 @@ function menuComun(){
 
          <li><a href="">Consultas</a>
             <ul>
-              <li><a href="">Atender Consulta</a></li>
+              <li><a href="mantenedorConsultas.php">Atender Consulta</a></li>
             </ul>
           </li>
 
