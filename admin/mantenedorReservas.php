@@ -59,9 +59,9 @@ echo'<p align="right"><a href="cerrarSesion.php">Cerrar Session</a></p>';
                 <td><input required type="text" name="txt_codigo" id="txt_codigo" maxlength="10"  placeholder="Ingrese su Codigo"></td>
             </tr> -->
             <tr>
-                <td>Rut:&nbsp;</td>
-                <td><input required type="text" name="txt_rut" id="txt_rut"  maxlength="10"  placeholder="paciente: ej:1234567-0"></td>
-                <td> <label style="color:red;" class="oculto" id="txt_rut_mensaje" for="">No registrado</label> </td>
+                <td>Rut Paciente:&nbsp;</td>
+                <td><input onkeypress="return soloNumerosyK(event);"  required type="text" name="txt_rut" id="txt_rut"  maxlength="10"  placeholder="paciente: ej:1234567-0"></td>
+                <td> <label style="color:red;" class="oculto" id="txt_rut_mensaje" for="">No esta registrado</label> </td>
             </tr>
 
           <td>&nbsp;</td>
@@ -167,8 +167,8 @@ function mostrarReservas(){
          url:"./reserva/insertarReserva.php",
          data:$("#formularioCrearEstado").serialize(),
          success:function(respuesta){
-           alert(respuesta);
-           $("#txt_rut_mensaje").html(respuesta);
+           //alert(respuesta);
+           //$("#txt_rut_mensaje").html(respuesta);
 
            if(respuesta==1){
               alert("Guardado Correctamente");
@@ -177,7 +177,7 @@ function mostrarReservas(){
 
            }else if(respuesta==3){
 
-              alert("El rut ingresado no existe");
+              //alert("El rut ingresado no existe");
               $("#txt_rut").focus();
               $("#txt_rut_mensaje").removeClass("oculto");
 

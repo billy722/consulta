@@ -3,6 +3,9 @@ require '../comun.php';
 conectar();
 
 $rut= $_REQUEST['txt_rut'];
+$rut= explode('-',$rut);
+$rut= $rut[0];
+
 $fecha= $_REQUEST['txt_fechaSeleccionada'];
 $hora= $_REQUEST['txt_id_hora'];
 
