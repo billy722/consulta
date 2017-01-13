@@ -61,20 +61,10 @@ echo'<p align="right"><a href="cerrarSesion.php">Cerrar Session</a></p>';
               <td><input required type="text" name="txt_receta" id="txt_receta" maxlength="10"  placeholder=""></td>
           </tr>
           <tr>
-              <td>Médico:&nbsp;</td>
-              <td>
-                <?php
-                abre select
-                $consulta="SELECT * FROM horas";
-                $listaMedicos=$con->query($consulta);
-
-                  while($filas= $listaMedicos->fetch_array()){
-                  echo aqui van los option
-                  }
-                  cierra see
-                 ?>
-              </td>
+              <td>Medico:&nbsp;</td>
+              <td><input required type="text" name="txt_medico" id="txt_medico" placeholder=""></td>
           </tr>
+
 		  <tr>
         nombre
         rut en imput
@@ -178,24 +168,24 @@ echo'<p align="right"><a href="cerrarSesion.php">Cerrar Session</a></p>';
 
       //$("#txt_id_reserva_oculto").val(id_reserva);
 
-      $.ajax({
-         url:"./consultas/datoUnaConsulta.php?txt_codigo="+id_reserva,
-         success:function(respuesta){
-           var datosRecibidos= respuesta.split(",");
-
-rut paciente
-nombre paciente
-           var rut=datosRecibidos[0];
-           var nombrePaciente=datosRecibidos[1];
-
-
-
-           $('#txt_codigo').val(codigo);
-           $('#txt_sintoma').val(sintoma);
-
-
-         }
-      });
+//       $.ajax({
+//          url:"./consultas/datoUnaConsulta.php?txt_codigo="+id_reserva,
+//          success:function(respuesta){
+//            var datosRecibidos= respuesta.split(",");
+//
+// rut paciente
+// nombre paciente
+//            var rut=datosRecibidos[0];
+//            var nombrePaciente=datosRecibidos[1];
+//
+//
+//
+//            $('#txt_codigo').val(codigo);
+//            $('#txt_sintoma').val(sintoma);
+//
+//
+//          }
+//       });
   }
   function ocultarFormularioCrear(){
     $("#cortinaModal").addClass("oculto");

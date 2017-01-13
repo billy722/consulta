@@ -34,7 +34,7 @@ $fechaRecibida= $_REQUEST['fecha'];
 
 
                     echo '<td> <label for="">Disponible</label> </td>';
-                    echo '<td> <input type="button" value="Atender" onclick="mostarFormularioCrear('.$filas['id_reserva'].','.$filas['id_hora'].',\''.$fechaRecibida.'\')" /> </td>';
+                    echo '<td> <input type="button" value="Atender" onclick="mostarFormularioCrear('.$filasReserva['id_reserva'].','.$filas['id_hora'].',\''.$fechaRecibida.'\')" /> </td>';
                     echo "</tr>";
                 }
 

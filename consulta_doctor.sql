@@ -221,7 +221,7 @@ CREATE TABLE `medico` (
 
 LOCK TABLES `medico` WRITE;
 /*!40000 ALTER TABLE `medico` DISABLE KEYS */;
-INSERT INTO `medico` VALUES (111,'2017-01-05 20:35:15','dfd','dff','zs','zs','xs','xxx'),(123,'2017-01-05 17:29:16','hola','aa','aa','aa','aa','aa'),(456,'2017-01-05 15:43:24','aaa','aa','aa','aa','aa','aa'),(1212,'2017-01-06 19:14:27','fdf','df','d','d','4343','d'),(5555,'2017-01-07 02:51:03','tg','gg','gg','gg','4656','f'),(212121,'2017-01-07 07:30:08','roberto','con sueÃ±o','nose','por ahi','42121','bratislova'),(18273352,'2017-01-09 21:07:39','Pablo','Perez','Rios','LOS RAULIES','82537240','Chileno');
+INSERT INTO `medico` VALUES (111,'2017-01-05 20:35:15','dfd','dff','zs','zs','xs','xxx'),(123,'2017-01-05 17:29:16','hola','aa','aa','aa','aa','aa'),(456,'2017-01-05 15:43:24','aaa','aa','aa','aa','aa','aa'),(654,'2017-01-11 00:27:36','','','','','',''),(1212,'2017-01-06 19:14:27','fdf','df','d','d','4343','d'),(5555,'2017-01-07 02:51:03','tg','gg','gg','gg','4656','f'),(212121,'2017-01-07 07:30:08','roberto','con sueÃ±o','nose','por ahi','42121','bratislova'),(18273352,'2017-01-09 21:07:39','Pablo','Perez','Rios','LOS RAULIES','82537240','Chileno'),(54651233,'2017-01-11 00:26:34','','','','','','');
 /*!40000 ALTER TABLE `medico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,7 +253,7 @@ CREATE TABLE `paciente` (
 
 LOCK TABLES `paciente` WRITE;
 /*!40000 ALTER TABLE `paciente` DISABLE KEYS */;
-INSERT INTO `paciente` VALUES (19616061,'2017-01-10 20:38:20','Carlos','Rivas','Riquelme','Hombre','1993-05-02','Los Peumos','123456','CHILENA');
+INSERT INTO `paciente` VALUES (12345678,'2017-01-11 00:32:29','prueba','papellido','papellidom','Hombre','1992-05-01','Villagran','123456','Chilena'),(19616061,'2017-01-10 20:38:20','Carlos','Rivas','Riquelme','Hombre','1993-05-02','Los Peumos','123456','CHILENA');
 /*!40000 ALTER TABLE `paciente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -298,7 +298,7 @@ DROP TABLE IF EXISTS `reserva`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reserva` (
-  `id_reserva` int(11) NOT NULL,
+  `id_reserva` int(11) NOT NULL AUTO_INCREMENT,
   `fecha` date NOT NULL,
   `hora` int(11) DEFAULT NULL,
   `id_estado` int(11) NOT NULL,
@@ -311,7 +311,7 @@ CREATE TABLE `reserva` (
   CONSTRAINT `id_estado_fk` FOREIGN KEY (`id_estado`) REFERENCES `estado_reserva` (`id_estado`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `rut_medico_fk` FOREIGN KEY (`rut_medico`) REFERENCES `medico` (`rut_medico`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `rut_p_fk` FOREIGN KEY (`rut_p`) REFERENCES `paciente` (`rut_p`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,7 +320,7 @@ CREATE TABLE `reserva` (
 
 LOCK TABLES `reserva` WRITE;
 /*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
-INSERT INTO `reserva` VALUES (1,'2017-01-10',1,1,18273352,19616061);
+INSERT INTO `reserva` VALUES (1,'2017-01-10',1,3,18273352,19616061),(2,'2017-01-10',3,1,18273352,19616061),(3,'2017-01-10',1,1,18273352,19616061);
 /*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,4 +366,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-10 18:28:03
+-- Dump completed on 2017-01-10 22:55:14
